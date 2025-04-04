@@ -1,37 +1,6 @@
-// import React from 'react'
-// import { useContext } from 'react'
-// import { StoreContext } from '../../context/StoreContext'
-// import FoodItem from '../FoodItem/FoodItem'
-// // import ShowMoreText from "react-show-more-text";
-
-// const FoodDisplay = ({ category }) => {
-
-//     const {food_list} = useContext(StoreContext)
-
-//   return (
-//     <div className='food-display mt-[30px] px-11'>
-//       <div className="food-display-list grid grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))] mt-[30px] gap-[20px] gap-y-[50px]">
-//         {food_list.map((item,index)=>{
-//           console.log(category,item.category);
-//           if(category==="Hemmesi" || category===item.category){
-//             return <FoodItem 
-//             key={index} 
-//             id={item._id} 
-//             name={item.name} 
-//             description={item.description} 
-//             price={item.price} 
-//             image={item.image} />
-//           }
-//         })}
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default FoodDisplay
 
 
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import FoodItem from '../FoodItem/FoodItem';
 

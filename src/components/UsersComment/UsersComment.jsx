@@ -1,4 +1,3 @@
-import React from 'react'
 import { assets } from '../../assets/assets'
 
 const UsersComment = () => {
@@ -35,7 +34,7 @@ const UsersComment = () => {
                                 <p className='font-inter font-medium text-[18px] leading-[28px] text-white'>
                                     There are many variatioof passages of Lorem Ipsum ava but the majority If you are
                                     going to use a passage of
-                                    Lorem Ipsum, you need tasure there isn't anything embarrassinhidden in
+                                    Lorem Ipsum, you need tasure there is not anything embarrassinhidden in
                                     believable.
                             </p>
                             </div>
@@ -66,7 +65,7 @@ const UsersComment = () => {
                                 <p className='font-inter font-medium text-[18px] leading-[28px] text-white'>
                                     There are many variatioof passages of Lorem Ipsum ava but the majority If you are
                                     going to use a passage of
-                                    Lorem Ipsum, you need tasure there isn't anything embarrassinhidden in
+                                    Lorem Ipsum, you need tasure there is not anything embarrassinhidden in
                                     believable.
                             </p>
                             </div>
@@ -97,7 +96,7 @@ const UsersComment = () => {
                                 <p className='font-inter font-medium text-[18px] leading-[28px] text-white'>
                                     There are many variatioof passages of Lorem Ipsum ava but the majority If you are
                                     going to use a passage of
-                                    Lorem Ipsum, you need tasure there isn't anything embarrassinhidden in
+                                    Lorem Ipsum, you need tasure there is not anything embarrassinhidden in
                                     believable.
                             </p>
                             </div>
@@ -130,7 +129,7 @@ const UsersComment = () => {
                                 <p className='font-inter font-medium text-[18px] leading-[28px] text-white'>
                                     There are many variatioof passages of Lorem Ipsum ava but the majority If you are
                                     going to use a passage of
-                                    Lorem Ipsum, you need tasure there isn't anything embarrassinhidden in
+                                    Lorem Ipsum, you need tasure there is not anything embarrassinhidden in
                                     believable.
                             </p>
                             </div>
@@ -161,7 +160,7 @@ const UsersComment = () => {
                                 <p className='font-inter font-medium text-[18px] leading-[28px] text-white'>
                                     There are many variatioof passages of Lorem Ipsum ava but the majority If you are
                                     going to use a passage of
-                                    Lorem Ipsum, you need tasure there isn't anything embarrassinhidden in
+                                    Lorem Ipsum, you need tasure there is not anything embarrassinhidden in
                                     believable.
                             </p>
                             </div>
@@ -192,7 +191,7 @@ const UsersComment = () => {
                                 <p className='font-inter font-medium text-[18px] leading-[28px] text-white'>
                                     There are many variatioof passages of Lorem Ipsum ava but the majority If you are
                                     going to use a passage of
-                                    Lorem Ipsum, you need tasure there isn't anything embarrassinhidden in
+                                    Lorem Ipsum, you need tasure there is not anything embarrassinhidden in
                                     believable.
                             </p>
                             </div>

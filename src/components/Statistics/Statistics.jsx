@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Statistics = () => {
   return (
     <div className='statistics flex justify-center items-center my-20'>

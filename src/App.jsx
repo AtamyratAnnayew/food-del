@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import "./index.css"; // Or your CSS file location
 import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router-dom';
