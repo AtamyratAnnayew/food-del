@@ -4,7 +4,7 @@ import { StoreContext } from '../../context/StoreContext'
 const PlaceOrder = () => {
   const {getTotalCartAmount} = useContext(StoreContext)
   return (
-    <from className='place-order text-white flex items-start justify-between gap-[50px] mt-[100px]'>
+    <form className='place-order text-white flex items-start justify-between gap-[50px] mt-[100px]'>
       <div className="place-oreder-left w-full ">
         <p className="title text-[30px] font-normal mb-[50px]">Delivery Infromation</p>
         <div className="multi-fields  flex gap-[10px]">
@@ -48,7 +48,7 @@ const PlaceOrder = () => {
           </button>
         </div>
       </div>
-    </from>
+    </form>
   )
 }
 

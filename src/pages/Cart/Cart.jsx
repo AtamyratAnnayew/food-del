@@ -3,7 +3,7 @@
 
 // const Cart = () => {
 
-//   const { cartItems, food_list, removeFormCart } = useContext(StoreContext);
+//   const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
 
 //   return (
 //     <div className='cart mt-100px px-25 mb-20'>
@@ -28,7 +28,7 @@
 //                   <p>{item.price} TMT</p>
 //                   <p>{cartItems[item._id]}</p>
 //                   <p>{item.price * cartItems[item._id]} TMT</p>
-//                   <p onClick={() => removeFormCart(item._id)} className='cursor-pointer'>X</p>
+//                   <p onClick={() => removeFromCart(item._id)} className='cursor-pointer'>X</p>
 //                 </div>
 //                 <hr className='bg-[#e2e2e2e2] w-[1140px] h-[2px]' />
 //               </div>
@@ -79,12 +79,12 @@
 
 // export default Cart;
 
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const { cartItems, food_list, removeFormCart, getTotalCartAmount } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
 
   const navigate =useNavigate();
 
@@ -112,7 +112,7 @@ const Cart = () => {
                   <p className="hidden md:block">{item.price} TMT</p>
                   <p>{cartItems[item._id]}</p>
                   <p className="hidden md:block">{item.price * cartItems[item._id]} TMT</p>
-                  <p onClick={() => removeFormCart(item._id)} className="cursor-pointer text-red-500 font-bold">X</p>
+                  <p onClick={() => removeFromCart(item._id)} className="cursor-pointer text-red-500 font-bold">X</p>
                 </div>
                 <hr className="bg-gray-300 w-full h-[2px]" />
               </div>
