@@ -13,5 +13,7 @@ const Header = () => {
     </div>
   )
 }
-
+{/* <div className='header -full h-[913px] bg-cover bg-center bg-no-repeat'style={{
+        backgroundImage: `url(${assets.phoneLogo})`,
+      }}> */}
 export default Header

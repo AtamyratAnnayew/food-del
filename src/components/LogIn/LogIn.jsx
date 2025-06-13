@@ -1,48 +1,128 @@
-import React, { useEffect, useState } from 'react'
-import { assets } from '../../assets/assets'
+import { useState } from "react";
+import { assets } from "../../assets/assets";
+import axios from "axios";
 
 const LogIn = ({ setShowLogin }) => {
-  
-  const [currState, setCurrState] = useState("Login")
+  const [currState, setCurrState] = useState("Login");
   const [data, setData] = useState({
     name: "",
     email: "",
-    password: ""
-  })
+    password: "",
+  });
 
-  const onChangeHandler = (event)=>{
-    const name = event.target.name;
-    const value = event.target.value;
-    setData(data=>({...data,[name]:value}))
-  }
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
-  // useEffect(()=>{
-  //   console.log(data)
-  // },[data])
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
 
+    const endpoint = currState === "Login" ? "/api/login" : "/api/signup";
+
+    try {
+      const response = await axios.post(endpoint, data);
+      console.log("Server Response:", response.data);
+      // You can save token or redirect here
+    } catch (error) {
+      console.error("Error:", error.response?.data || error.message);
+      alert("An error occurred: " + error.response?.data?.message || error.message);
+    }
+  };
 
   return (
-    <div className='logIn absolute z-1 w-full h-full bg-[#00000090] grid'>
-      <form className="logInContainer place-self-center w-[max(23vw,_330px)] text-[#808080] bg-stone-800 flex flex-col gap-[25px] p-[25px_30px] rounded-[8px] text-[14px]">
-        <div className="logInTitle flex flex-row justify-between items-center">
-          <h2 className='text-2xl text-black font-bold'>{currState}</h2>
-          <img onClick={() => setShowLogin(false)} className='w-[20px] h-[20px] cursor-pointer' src={assets.cross} alt="" />
+    <div className="logIn fixed inset-0 z-10 bg-black/60 grid place-items-center p-4">
+      <form
+        onSubmit={onSubmitHandler}
+        className="logInContainer w-full max-w-md bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg flex flex-col gap-6"
+      >
+        {/* Header */}
+        <div className="logInTitle flex justify-between items-center">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+            {currState}
+          </h2>
+          <img
+            onClick={() => setShowLogin(false)}
+            className="w-5 h-5 cursor-pointer"
+            src={assets.cross}
+            alt="Close"
+          />
         </div>
-        <div className="logInInputs w-32 h-28 flex flex-col gap-2">
-          {currState === "Login" ? <></> : <input name='name' onChange={onChangeHandler} value={data.name} type="text " placeholder='name' className='border-1 border-black w-68 h-8 rounded-2xl pl-4' required />}
-          <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='email' className='border-1 border-black w-68 h-8 rounded-2xl pl-4' required />
-          <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='password' className='border-1 border-black w-68 h-8 rounded-2xl pl-4' required />
+
+        {/* Inputs */}
+        <div className="logInInputs flex flex-col gap-4">
+          {currState === "Sign up" && (
+            <input
+              name="name"
+              value={data.name}
+              onChange={onChangeHandler}
+              type="text"
+              placeholder="Name"
+              className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+              required
+            />
+          )}
+          <input
+            name="email"
+            value={data.email}
+            onChange={onChangeHandler}
+            type="email"
+            placeholder="Email"
+            className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+            required
+          />
+          <input
+            name="password"
+            value={data.password}
+            onChange={onChangeHandler}
+            type="password"
+            placeholder="Password"
+            className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+            required
+          />
         </div>
-        <button className='bg-[#000000] h-10 text-xl rounded-[30px]'>{currState === "Sign up" ? "Create Account" : "Login"}</button>
-        <div className="logInCondition flex flex-row gap-4">
-          <input type="checkbox" required />
-          <p>By continuingm i agree to the term of use & privacy policy.</p>
-        </div>
-        {currState === "Login" ? <p>Create a new account? <span onClick={() => setCurrState("Sign up")} className='text-red-700 cursor-pointer'>Click here</span></p>
-          : <p>Already have an account? <span onClick={() => setCurrState("Login")} className='text-blue-700 cursor-pointer'>Login here</span></p>}
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold text-lg transition"
+        >
+          {currState === "Sign up" ? "Create Account" : "Login"}
+        </button>
+
+        {/* Terms */}
+        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+          <input type="checkbox" required className="accent-blue-600" />
+          I agree to the Terms of Use & Privacy Policy
+        </label>
+
+        {/* Switch between login/signup */}
+        <p className="text-sm text-center text-gray-600 dark:text-gray-300">
+          {currState === "Login" ? (
+            <>
+              Don’t have an account?{" "}
+              <span
+                onClick={() => setCurrState("Sign up")}
+                className="text-blue-500 font-medium cursor-pointer"
+              >
+                Sign up
+              </span>
+            </>
+          ) : (
+            <>
+              Already have an account?{" "}
+              <span
+                onClick={() => setCurrState("Login")}
+                className="text-blue-500 font-medium cursor-pointer"
+              >
+                Login
+              </span>
+            </>
+          )}
+        </p>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default LogIn
+export default LogIn;

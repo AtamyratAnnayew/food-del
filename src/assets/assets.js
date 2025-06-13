@@ -12,7 +12,7 @@ import instagram from './Instagram.svg'
 import comment from './Comment.svg'
 import star from './Star.svg'
 import cross from './crossIcon.png'
-
+import phoneLogo from './telLogo.svg'
 
 import eclair from './Eclair.svg'
 import tort from './Tort.svg'
@@ -46,6 +46,7 @@ import brownTommySendwich from './BrowntommySendwich.svg'
 
 export const assets = {
     logo,
+    phoneLogo,
     productTrash,
     search,
     headerImage,

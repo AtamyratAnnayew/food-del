@@ -1,42 +1,78 @@
-import { assets } from '../../assets/assets'
+import { useState } from 'react';
+import { assets } from '../../assets/assets';
 
 const Footer = () => {
-    return (
-        <div className='footer' id="habarlasmak">
-            <div className="footerContent bg-[#191919] h-[410px] px-28 pt-20 ">
-                <div className="footerMenu flex flex-row justify-between text-white">
-                    <div className="footerMenuItem_1 flex flex-col gap-5">
-                        <h1 className='font-inter font-semibold text-2xl leading-6'>Önümlerimiz</h1>
-                        <div className="flex flex-col gap-4 font-inter font-normal text-lg leading-4">
-                            <span>Menýularymyz</span>
-                            <span>Döwrümiziň taraplary</span>
-                        </div>
-                    </div>
+  const [selectedSocial, setSelectedSocial] = useState(null);
 
-                    <div className="footerMenuItem_2 flex flex-col gap-5 ">
-                        <h1 className='font-inter font-semibold text-2xl leading-6'>Hukuk maglumatlary</h1>
-                        <span className='font-inter font-normal text-lg leading-4'>Hukuk habarnamasy</span>
-                    </div>
+  const handleSocialClick = (social) => {
+    setSelectedSocial(social);
+  };
 
-                    <div className="footerMenuItem_3 flex flex-col gap-5">
-                        <h1 className='font-inter font-semibold text-2xl leading-6'>Biz bilen habarlaşyň</h1>
-                        <div className="flex flex-col gap-4 font-inter font-normal text-lg leading-4">
-                            <span>Aragatnaşyklar</span>
-                            <span>Salgylarymyz</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="footerSoscial flex flex-col gap-5 justify-center items-center mt-20">
-                    <hr className='h-2 w-[1170px] border-t-[1px] border-[#4F4F4F]'/>
-                    <div className="flex flex-row gap-6 cursor-pointer">
-                        <img src={assets.facebook} alt="" />
-                        <img src={assets.twitter} alt="" />
-                        <img src={assets.instagram} alt="" />
-                    </div>
-                </div>
+  const closeModal = () => {
+    setSelectedSocial(null);
+  };
+
+  return (
+    <div className="footer bg-[#191919] text-white" id="habarlasmak">
+      <div className="footerContent px-6 md:px-20 pt-16 pb-8">
+        <div className="footerMenu flex flex-col md:flex-row justify-between gap-10">
+          {/* Section 1 */}
+          <div className="flex flex-col gap-4">
+            <h1 className="font-semibold text-xl md:text-2xl">Önümlerimiz</h1>
+            <div className="flex flex-col gap-2 text-base md:text-lg">
+              <span>Menýularymyz</span>
+              <span>Döwrümiziň taraplary</span>
             </div>
+          </div>
+
+          {/* Section 2 */}
+          <div className="flex flex-col gap-4">
+            <h1 className="font-semibold text-xl md:text-2xl">Hukuk maglumatlary</h1>
+            <span className="text-base md:text-lg">Hukuk habarnamasy</span>
+          </div>
+
+          {/* Section 3 */}
+          <div className="flex flex-col gap-4">
+            <h1 className="font-semibold text-xl md:text-2xl">Biz bilen habarlaşyň</h1>
+            <div className="flex flex-col gap-2 text-base md:text-lg">
+              <span>Aragatnaşyklar</span>
+              <span>Salgylarymyz</span>
+            </div>
+          </div>
         </div>
-    )
-}
+
+        {/* Social Section */}
+        <div className="footerSocial flex flex-col items-center mt-12 gap-6">
+          <hr className="w-full max-w-4xl border-t border-[#4F4F4F]" />
+          <div className="flex gap-6 cursor-pointer">
+            <img src={assets.facebook} alt="Facebook" onClick={() => handleSocialClick('facebook')} />
+            <img src={assets.twitter} alt="Twitter" onClick={() => handleSocialClick('twitter')} />
+            <img src={assets.instagram} alt="Instagram" onClick={() => handleSocialClick('instagram')} />
+          </div>
+        </div>
+      </div>
+
+      {/* Modal */}
+      {selectedSocial && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+          <div className="bg-white text-black rounded-xl p-6 w-80 relative">
+            <button
+              className="absolute top-2 right-4 text-xl font-bold"
+              onClick={closeModal}
+            >
+              &times;
+            </button>
+            <h2 className="text-xl font-semibold mb-4">Bizim {selectedSocial.charAt(0).toUpperCase() + selectedSocial.slice(1)} sahypamyz</h2>
+            <p className="text-sm">
+              {selectedSocial === 'facebook' && 'https://facebook.com/youraccount'}
+              {selectedSocial === 'twitter' && 'https://twitter.com/youraccount'}
+              {selectedSocial === 'instagram' && 'https://instagram.com/youraccount'}
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Footer;
