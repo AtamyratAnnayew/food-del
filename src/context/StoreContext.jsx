@@ -32,14 +32,16 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
-
+const [isModalOpen, setIsModalOpen] = useState(false);
     const contextValue = {
         food_list,
         cartItems,
         setCartItems,
         addToCart,
         removeFromCart,
-        getTotalCartAmount
+        getTotalCartAmount,
+        isModalOpen,
+        setIsModalOpen,
     }
     return (
         <StoreContext.Provider value={contextValue}>

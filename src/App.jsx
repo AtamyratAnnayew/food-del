@@ -40,6 +40,7 @@ import Cart from './pages/Cart/Cart';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Footer from './components/Footer/Footer';
 import LogIn from './components/LogIn/LogIn';
+import ModalForm from './components/Header/ModalForm';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
+      <ModalForm />
     </div>
   );
 };
