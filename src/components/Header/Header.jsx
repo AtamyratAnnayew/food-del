@@ -7,23 +7,29 @@ const Header = () => {
 
   return (
     <div
-      className="header -full h-[913px] bg-cover bg-center bg-no-repeat"
+      className="relative w-full h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${assets.headerImage})` }}
     >
-      <div className="headerMain absolute flex flex-col items-start gap-[40px] w-[744px] h-[345px] left-[188px] top-[368px]">
-        <p className="headerText text-4xl text-white font-inter font-extrabold text-[66px] leading-[79px]">
-          Hoş geldiňiz!<br />
-          Biz siziň üçin ýakymly <br />iýmitler taýýarladyk
+      <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[744px] px-4 sm:px-6 flex flex-col items-start gap-6 sm:gap-8 md:gap-10 text-start">
+
+        {/* Responsive Heading */}
+        <p className="text-white font-inter font-extrabold text-3xl sm:text-4xl md:text-6xl leading-snug sm:leading-tight">
+          Hoş geldiňiz!
+          <br />
+          Biz siziň üçin ýakymly <br />
+          iýmitler taýýarladyk
         </p>
+
+        {/* Responsive Button */}
         <button
           onClick={() => setIsModalOpen(true)}
-          className="w-[261px] h-[68px] rounded-[40px] pt-[20px] pr-[50px] pb-[20px] pl-[50px] gap-[10px] font-inter font-semibold text-[18px] leading-[28px] tracking-[0%] bg-white text-black cursor-pointer"
-      >
-        Onlaýn zakaz ediň
-      </button>
-
+          className="w-full sm:w-[261px] h-[58px] sm:h-[68px] rounded-full px-6 sm:px-[50px] py-3 sm:py-[20px] bg-white text-black font-inter font-semibold text-base sm:text-lg leading-7 cursor-pointer transition hover:bg-gray-200"
+        >
+          Onlaýn zakaz ediň
+        </button>
       </div>
     </div>
+
   );
 };
 

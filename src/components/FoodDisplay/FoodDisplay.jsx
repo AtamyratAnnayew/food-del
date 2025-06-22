@@ -1,8 +1,8 @@
-
-
 import { useState, useContext } from 'react';
-import { StoreContext } from '../../context/StoreContext';
+import { StoreContext } from '../../context/storeContext';
 import FoodItem from '../FoodItem/FoodItem';
+import PropTypes from 'prop-types';
+
 
 const FoodDisplay = ({ category }) => {
   const { food_list } = useContext(StoreContext);
@@ -15,36 +15,46 @@ const FoodDisplay = ({ category }) => {
     setVisibleItems(food_list.length); // Show all items
   };
 
-  return (
-    <div className="food-display mt-[30px] px-11">
-      <div id="menu" className="food-display-list  grid grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))] mt-[30px] gap-[20px] gap-y-[50px]">
-        {food_list.slice(0, visibleItems).map((item, index) => {
-          if (category === 'Hemmesi' || category === item.category) {
-            return (
-              <FoodItem
-                className='w-[370px] h-[442px]'
-                key={index}
-                id={item._id}
-                name={item.name}
-                description={item.description}
-                price={item.price}
-                image={item.image}
-              />
-            );
-          }
-        })}
-      </div>
+  FoodDisplay.propTypes = {
+  category: PropTypes.string.isRequired,
+};
 
-      {/* Show More button */}
-      {visibleItems < food_list.length && (
-        <div className="flex justify-center items-center"><button
+  return (
+    <div className="food-display mt-8 px-4 sm:px-8 md:px-11">
+  <div
+    id="menu"
+    className="food-display-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-[20px] mt-8"
+  >
+    {food_list.slice(0, visibleItems).map((item, index) => {
+      if (category === "Hemmesi" || category === item.category) {
+        return (
+          <FoodItem
+            key={index}
+            id={item._id}
+            name={item.name}
+            description={item.description}
+            price={item.price}
+            image={item.image}
+            className="w-full h-[442px]"
+          />
+        );
+      }
+    })}
+  </div>
+
+  {/* Show More Button */}
+  {visibleItems < food_list.length && (
+    <div className="flex justify-center items-center mt-6">
+      <button
         onClick={handleShowMore}
-        className="show-more-btn w-[281px] h-[58px] cursor-pointer mt-5 py-2 px-4 bg-white text-black rounded-[40px] font-inter font-semibold text-[18px] leading-[28px]"
+        className="show-more-btn w-full sm:w-[281px] h-[58px] py-2 px-4 bg-white text-black rounded-full font-inter font-semibold text-lg leading-7"
       >
         Hemmesine serediň
-      </button></div>
-      )}
+      </button>
     </div>
+  )}
+</div>
+
   );
 };
 

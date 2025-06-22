@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { assets } from "../../assets/assets";
 import axios from "axios";
+import PropTypes from 'prop-types';
 
 const LogIn = ({ setShowLogin }) => {
   const [currState, setCurrState] = useState("Login");
@@ -9,6 +10,9 @@ const LogIn = ({ setShowLogin }) => {
     email: "",
     password: "",
   });
+  LogIn.propTypes = {
+    setShowLogin: PropTypes.string.isRequired,
+  };
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;

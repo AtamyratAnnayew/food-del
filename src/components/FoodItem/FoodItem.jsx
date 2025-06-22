@@ -1,11 +1,19 @@
 import { useContext} from 'react'
 import { assets } from '../../assets/assets'
-import { StoreContext } from '../../context/StoreContext'
+import { StoreContext } from '../../context/storeContext';
+import PropTypes from 'prop-types';
 
 const FoodItem = ({id, name, price, description, image}) => {
 
  
   const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
+  FoodItem.propTypes = {
+    id: PropTypes.string.isRequired,     
+    name: PropTypes.func.isRequired,  
+    price: PropTypes.string.isRequired,     
+    description: PropTypes.func.isRequired, 
+    image: PropTypes.string.isRequired,      
+  };
 
   return (
     <div className='food-item w-100% m-auto rounded-md shadow-[0px_0px_10px_#000000] bg-[#191919]'>
